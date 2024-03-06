@@ -55,7 +55,8 @@ static char	*reading_error(char *buffer, char **cached)
 {
 	free(*cached);
 	*cached = NULL;
-	return (free(buffer), NULL);
+	free(buffer);
+	return (NULL);
 }
 
 static void	fill_cache(char *buffer, char **cached)
@@ -63,9 +64,7 @@ static void	fill_cache(char *buffer, char **cached)
 	char	*temp;
 
 	if (!(*cached))
-	{
 		*cached = ft_substr(buffer, 0, ft_strlen(buffer));
-	}
 	else
 	{
 		temp = ft_strjoin(*cached, buffer);
